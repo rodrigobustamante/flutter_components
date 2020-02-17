@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutterio_components/src/pages/home_page.dart';
 import 'package:flutterio_components/src/pages/alert_page.dart';
-import 'package:flutterio_components/src/pages/avatar_page.dart';
+import 'package:flutterio_components/src/routes/routers.dart';
 
 class App extends StatelessWidget {
   @override
@@ -11,14 +10,11 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: routes(context),
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+          builder: (BuildContext context) => AlertPage(),
+        );
+      },
     );
-  }
-
-  Map<String, WidgetBuilder> routes(context) {
-    return {
-      '/'     : (BuildContext context) => HomePage(),
-      'alert' : (BuildContext context) => AlertPage(),
-      'avatar': (BuildContext context) => AvatarPage(),
-    };
   }
 }
